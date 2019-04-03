@@ -12,7 +12,7 @@ public class ApplicationRun {
     static UserServiceImpl userService = new UserServiceImpl();
     static StudentServiceImpl productService = new StudentServiceImpl();
 
-    static String adminCommand = "whoAmI, Logout, ListUsers, ListStudent, EnterAStudent, DeleteAStudent, ShowGPA";
+    static String adminCommand = "whoAmI, Logout, ListUsers, ListStudent, EnterAStudent, DeleteAStudent";
     static String userCommand = "whoAmI, Logout";
 
     static Scanner info = new Scanner(System.in);
@@ -26,16 +26,7 @@ public class ApplicationRun {
         String username = info.next();
         System.out.println("Please enter a password");
         String password = info.next();
-        System.out.println("Please enter your grade1");
-        Double grade1 = info.nextDouble();
-        System.out.println("Please enter your grade2");
-        Double grade2 = info.nextDouble();
-        System.out.println("Please enter your grade3");
-        Double grade3 = info.nextDouble();
-        System.out.println("Please enter your grade4");
-        Double grade4 = info.nextDouble();
-        System.out.println("Please enter your grade5");
-        Double grade5 = info.nextDouble();
+      
         
 
         if (choice.equals("yes")) {
@@ -77,8 +68,8 @@ public class ApplicationRun {
                         }
                         break;
                         
-                    case "Show GPA":
-                    	  if (user.type.equals("admin")) {
+                    case "ShowGPA":
+                    	 if (user.type.equals("admin")) {
                               System.out.println("Grade list : ");
                               System.out.println(productService.listProduct());
 
@@ -115,23 +106,26 @@ public class ApplicationRun {
     }
 
 
-    public static void showStudentGPA() throws IOException {
+ 
+
+
+	public static void showStudentGPA() throws IOException {
 		
 		File file = new File("students.txt");
 		Scanner scanFile = new Scanner(file);
 		Scanner keyboard = new Scanner(System.in);
 		String ss = null;
-		String stdID;
+		String id;
 		
 		System.out.println("Please enter stdID: ");
-		stdID = keyboard.next();
+		id = keyboard.next();
 		
 		
 		while(scanFile.hasNext()) {
 			
 			ss = scanFile.nextLine();
 			
-			if(ss.contains(stdID)) {
+			if(ss.contains(id)) {
 				
 				String[] parts = ss.split("GPA: ");
 				System.out.println(parts[1].trim());

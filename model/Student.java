@@ -35,10 +35,7 @@ public class Student {
 		return average;
 	}
   	
-  	public void calcGPA(double grade1, double grade2, double grade3){
-  		
-  		this.GPA = (grade1 + grade2 + grade3) / 3;
-  	}
+  	
    
       
         }
